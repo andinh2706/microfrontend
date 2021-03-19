@@ -19,7 +19,7 @@ jobs:
       - name: Set Actions Allow Unsecure Commands
         id: step_one
         run: |
-          echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true"           
+          /bin/echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true"           
 
       - uses: actions/checkout@v2
       - run: npm install
