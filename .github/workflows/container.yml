@@ -15,16 +15,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Set Actions Allow Unsecure Commands
-        id: step_one
-        run: |
-          /bin/echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true"           
-
+    steps:          
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
 
+      - name: Set Actions Allow Unsecure Commands
+        id: step_one
+        run: |
+          echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" 
+          
       - uses: chrislennon/action-aws-cli@v1.1
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
         env:
