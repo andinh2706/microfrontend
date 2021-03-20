@@ -17,7 +17,8 @@ const devConfig = {
       name: 'container',
       remotes: {
         marketingApp: 'marketing@http://localhost:8081/remoteEntry.js',
-        authApp: 'auth@http://localhost:8082/remoteEntry.js'
+        authApp: 'auth@http://localhost:8082/remoteEntry.js',
+        dashboardApp: 'dashboard@http://localhost:8083/remoteEntry.js'
       },
       shared: packageJSON.dependencies
     })
