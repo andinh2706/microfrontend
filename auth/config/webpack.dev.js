@@ -7,23 +7,25 @@ const packageJSON = require("../package.json");
 const devConfig = {
   mode: 'development',
   output: {
-    publicPath: "http://localhost:8081/"
+    publicPath: "http://localhost:8082/"
   },
   devServer: {
-    port: 8081,
-    historyApiFallback: true,
+    port: 8082,
+    historyApiFallback: true
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'marketing',
+      name: 'auth',
       filename: 'remoteEntry.js',
       exposes: {
-        './MarketingBootstrap': './src/bootstrap',
+        './AuthBootstrap': './src/bootstrap',
       },
       shared: packageJSON.dependencies
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      filename: "index.html",
+      inject: "body"
     }),
   ],
 };

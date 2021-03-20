@@ -1,8 +1,8 @@
 import React, {useRef, useEffect } from "react";
-import { mount } from "marketingApp/MarketingBootstrap";
+import { mount } from "authApp/AuthBootstrap";
 import { useHistory } from "react-router-dom";
 
-export default () => {
+export default ({onSignIn, onSignOut}) => {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -15,7 +15,9 @@ export default () => {
                     history.push(nextPathname);
                 }
             },
-            initialPath: history.location.pathname
+            initialPath: history.location.pathname,
+            onSignIn,
+            onSignOut
         });
         history.listen(onHostAppNavigate);
     }, []);
